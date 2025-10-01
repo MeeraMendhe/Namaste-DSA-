@@ -22,5 +22,19 @@ const removeDuplicates = function(nums) {
     return count
 };
 
+var removeDuplicate = function(nums) {
+    
+    let count=0;
+    for(let i=0;i<nums.length;i++){
+        if(nums[count]<nums[i])
+        {
+            count++
+            nums[count]=nums[i]
+        }
+    }
+    return count+1 // count is index value ,number of unique value is index+1 [0,1,2,3]
+    //count value is 3 and unique values are 4
+};
+
 console.log(removeDuplicates([1,1,2]))
 console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
