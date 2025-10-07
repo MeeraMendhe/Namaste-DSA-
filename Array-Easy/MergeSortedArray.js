@@ -21,21 +21,19 @@ The result of the merge is [1,2,2,3,5,6] with the underlined elements coming fro
 /*/
 
 var merge = function (nums1, m, nums2, n) {
-  let s1 = m - 1;
-  let s2 = n - 1;
-
-  for (let i = m + n - 1; i >= 0; i--) {
-    if (s2 < 0) {
-      break;
-    }
-    if (nums1[s1] > nums2[s2]) {
-      nums1[i] = nums1[s1];
-      s1--;
+  let copy = nums1.slice(0, m);
+  let i = 0;
+  let j = 0;
+  for (let k = 0; k < m + n; k++) {
+    if (j >= n || (i < m && copy[i] < nums2[j])) {
+      nums1[k] = copy[i];
+      i++;
     } else {
-      nums1[i] = nums2[s2];
-      s2--;
+      nums1[k] = nums2[j];
+      j++;
     }
   }
+  return nums1;
 };
 
 console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
