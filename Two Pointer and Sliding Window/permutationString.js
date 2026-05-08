@@ -1,32 +1,36 @@
 var checkInclusion = function(s1, s2) {
-    let obj={}
-    for(let i=0;i<s1.length;i++){
-        if(!obj[s1[i]]){
-            obj[s1[i]]=1
-        }else{
-            obj[s1[i]]++
-        }
-    }
-    let i=j=0;
-    let map={}
-    while(j<s2.length){
-        if(obj[s2[j]]){
-            map[s2[j]]=1
-        }else{
-          len=j-i
-          console.log(len, s2[i], s2[j])
-          if(len==s1.length){
-            return true
-          }else{
-            i++
-            j++;
-          }
-        }
-    }
-    return false
-    console.log(obj)
+ let hashS=Array(26).fill(0)
+ let hashW=Array(26).fill(0)
+ let window=s1.length
+ for(let i=0;i<window;i++){
+    ++hashS[s1.charCodeAt(i)-97]
+    ++hashW[s2.charCodeAt(i)-97]
+ }
+ //console.log(hashS, hashW)
+ let i=0;
+ let j=window-1
+ while(j<s2.length){
+  if(isHashSame(hashS,hashW)){
+    return true
+  }else{
+    --hashW[s2.charCodeAt(i)-97]
+    i++
+    j++
+    ++hashW[s2.charCodeAt(j)-97]
+  }
+ }
+ return false
 };
+
+const isHashSame=function(hashS, hashW){
+    for(let i=0;i<26;i++){
+        if(hashS[i]!=hashW[i]){
+            return false
+        }
+    }
+    return true
+}
 
 console.log(checkInclusion("ab","sdebalf"))
 
-// console.log(checkInclusion("ab","sdeeakdbfla"))
+console.log(checkInclusion("ab","sdeeakdbfla"))
