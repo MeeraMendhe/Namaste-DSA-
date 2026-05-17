@@ -12,4 +12,4 @@ var preorderTraversal = function(root) {
     return ans
 };
 
-console.log(preorderTraversal([1,null,2,3]))
+// console.log(preorderTraversal([1,null,2,3]))
