@@ -1,4 +1,5 @@
 var preorderTraversal = function(root) {
+    //root- left- right
     if(!root) return []
     let ans=[]
     let stack=[root]
