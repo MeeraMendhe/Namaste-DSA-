@@ -3,7 +3,7 @@ var preorderTraversal = function(root) {
     if(!root) return []
     let ans=[]
     let stack=[root]
-    console.log(root)
+   // console.log(root)
     while(stack.length){
       let current=stack.pop()
       ans.push(current?.val)
